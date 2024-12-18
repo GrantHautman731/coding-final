@@ -1,0 +1,56 @@
+data = [
+    {"Item": "Laptop", "It could be in Bedroom": "Desk", "It could be in Basement": "Office Room", "It could be in Kitchen": "Counter", "It could be at School": "Library"},
+    {"Item": "Watch", "It could be in Bedroom": "Night Stand", "It could be in Basement": "Couch", "It could be in Kitchen": "Cabinet", "It could be at School": "Bathroom"},
+    {"Item": "Backpack", "It could be in Bedroom": "Desk", "It could be in Basement": "Couch", "It could be in Kitchen": "Island", "It could be at School": "Classroom"}
+]
+
+def add_row(Item, It_could_be_in_Bedroom, It_could_be_in_Basement, It_could_be_in_Kitchen, It_could_be_at_School):
+    new_entry = {
+        "Item": Item,
+        "It could be in Bedroom": It_could_be_in_Bedroom,
+        "It could be in Basement": It_could_be_in_Basement,
+        "It could be in Kitchen": It_could_be_in_Kitchen,
+        "It could be at School": It_could_be_at_School
+    }
+    data.append(new_entry)
+
+def search_by_index(index):
+    if 0 <= index < len(data):
+        entry = data[index]
+        return entry["Item"], entry["It could be in Bedroom"], entry["It could be at School"]
+    else:
+        return "Index out of range"
+
+def main_menu():
+    print("Menu:")
+    print("1. View Current Item Locations")
+    print("2. Add an Item")
+    print("3. Exit")
+
+while True:
+    main_menu()
+    choice = input("Enter your choice: ")
+    
+    if choice == "1":
+        for i, entry in enumerate(data):
+            print(f"Index {i}: {entry}")
+        
+        index_to_search = int(input("Enter the index to search: "))
+        result = search_by_index(index_to_search)
+        print(f"Search result: {result}")
+    
+    elif choice == "2":
+        Item = input("Item: ")
+        It_could_be_in_Bedroom = input("It could be in Bedroom: ")
+        It_could_be_in_Basement = input("It could be in Basement: ")
+        It_could_be_in_Kitchen = input("It could be in Kitchen: ")
+        It_could_be_at_School = input("It could be at School: ")
+        
+        add_row(Item, It_could_be_in_Bedroom, It_could_be_in_Basement, It_could_be_in_Kitchen, It_could_be_at_School)
+    
+    elif choice == "3":
+        print("Exiting the program.")
+        break
+    
+    else:
+        print("Invalid choice. Please select a valid option.")
